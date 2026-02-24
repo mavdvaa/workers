@@ -1,0 +1,22 @@
+service: worker
+
+provider:
+  name: aws
+  timeout: 60
+  runtime: nodejs20.x
+  region: us-east-1
+  environment:
+    REDIS_URL: 'redis://localhost:6379'
+
+plugins:
+  - serverless-offline
+
+functions:
+  shaWorker:
+    handler: src/workers/shaWorker.handler
+
+  triggeredWorker:
+    handler: src/workers/triggeredWorker.handler
+
+  periodicWorker:
+    handler: src/workers/periodicWorker.handler
