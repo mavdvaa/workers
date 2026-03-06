@@ -1,5 +1,4 @@
 import { createClient } from 'redis'
-import { createVerify, randomUUID, createHash } from 'crypto'
 import { rightNumber, notRightNumber, periodicResIntoUsers } from '../db/periodicDb.mjs'
 import { verify } from '../crypto/cryptoPackage.mjs'
 import { userVerification } from '../db/db.mjs'

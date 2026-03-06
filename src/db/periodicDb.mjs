@@ -1,5 +1,6 @@
 // для periodic
 import { pool } from "./db.mjs"
+
 export async function rightNumber(taskTime, jobId) {
     const periodTableResT = await pool.query(`
     UPDATE periodic_tasks

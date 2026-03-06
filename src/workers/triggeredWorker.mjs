@@ -96,9 +96,9 @@ export async function processTriggeredTask() {
         const totalSum = data.sum
 
         await triggResults(totalCount, totalSum, taskTime, jobId)
-        await triggeredResIntoUsers()
-
         await isRightTriggered(jobId)
+
+        await triggeredResIntoUsers()
     }
 
     await client.lRem('triggered-processing', 0, task)

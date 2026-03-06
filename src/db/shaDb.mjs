@@ -12,15 +12,6 @@ export async function shaResults(prefix, hash, taskTimeSHA, jobId) {
 
 }
 
-export async function checkResSha(jobId, prefixL, prefix) {
-    const checkResSha = await pool.query(`
-    UPDATE sha_tasks
-    SET is_right = true
-    WHERE job_id = $1 AND 
-    LEFT(result, $2) = $3`,
-    [jobId, prefixL, prefix])
-}
-
 export async function shaResIntoUsers() {
     const shaTableUsers = await pool.query(`
     UPDATE users
