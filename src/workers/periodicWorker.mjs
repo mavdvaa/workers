@@ -1,5 +1,5 @@
 import { createClient } from 'redis'
-import { rightNumber, notRightNumber, periodicResIntoUsers } from '../db/periodicDb.mjs'
+import { rightNumber, notRightNumber } from '../db/periodicDb.mjs'
 import { verify } from '../crypto/cryptoPackage.mjs'
 import { userVerification } from '../db/db.mjs'
 import { isRightReriodic } from '../db/isRightDB.mjs'
@@ -66,7 +66,6 @@ async function processPeriodicTask() {
 
     await isRightReriodic(jobId)
 
-    await periodicResIntoUsers()
     console.log('Задание periodic выполнено')
 
     await client.lRem('periodic-processing', 0, task)

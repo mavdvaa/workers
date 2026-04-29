@@ -22,19 +22,3 @@ export async function notRightNumber(taskTime, jobId) {
     
 }
 
-export async function periodicResIntoUsers() {
-    const periodTableRes = await pool.query(`
-        UPDATE users
-        SET 
-        count_right_periodic_tasks = (
-        SELECT COUNT(is_right)
-        FROM periodic_tasks p
-        WHERE p.user_id = users.id AND status = true AND is_right = true),
-    
-        count_periodic_tasks = (
-        SELECT COUNT(status)
-        FROM periodic_tasks p
-        WHERE p.user_id = users.id AND status = true)`,
-        )
-    
-}

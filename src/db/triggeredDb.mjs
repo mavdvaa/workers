@@ -11,18 +11,3 @@ export async function triggResults(results, sumNumbers, taskTimeRes, triggJobId)
         [results, sumNumbers, taskTimeRes, triggJobId])
 }
 
-export async function triggeredResIntoUsers() {
-    const triggTableRes = await pool.query(`
-        UPDATE users
-        SET 
-        count_right_triggered_tasks = (
-        SELECT COUNT(is_right)
-        FROM triggered_tasks t
-        WHERE t.user_id = users.id AND status = true AND is_right = true),
-      
-        count_triggered_tasks = (
-        SELECT COUNT(status)
-        FROM triggered_tasks t
-        WHERE t.user_id = users.id AND status = true)`,
-    )
-}

@@ -3,7 +3,7 @@ import { createHash } from 'crypto'
 import { verify } from '../crypto/cryptoPackage.mjs'
 import { step } from '../scaling/scaling.mjs'
 import { userVerification } from '../db/db.mjs'
-import { shaResIntoUsers, shaResults } from '../db/shaDb.mjs'
+import { shaResults } from '../db/shaDb.mjs'
 import { checkResSha } from '../db/isRightDB.mjs'
 import { shaFunc } from '../functions/shaFunction.mjs'
 
@@ -79,7 +79,6 @@ export async function processShaTask() {
 
             await shaResults(resFunc.hash, taskTimeSHA, resFunc.value, jobId)
             await checkResSha(jobId, prefix.length, prefix)
-            await shaResIntoUsers()
         } 
     }
 

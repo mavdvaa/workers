@@ -2,7 +2,7 @@ import { createClient } from 'redis'
 import { verify } from '../crypto/cryptoPackage.mjs'
 import { countT } from '../scaling/scaling.mjs'
 import { userVerification } from '../db/db.mjs'
-import { triggResults, triggeredResIntoUsers } from '../db/triggeredDb.mjs'
+import { triggResults } from '../db/triggeredDb.mjs'
 import { isRightTriggered } from '../db/isRightDB.mjs'
 import { isSimple } from '../functions/triggeredFunction.mjs'
 
@@ -89,7 +89,6 @@ export async function processTriggeredTask() {
         await triggResults(totalCount, totalSum, taskTime, jobId)
         await isRightTriggered(jobId)
 
-        await triggeredResIntoUsers()
     }
 
     await client.lRem('triggered-processing', 0, task)
