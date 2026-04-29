@@ -3,6 +3,7 @@ import { rightNumber, notRightNumber, periodicResIntoUsers } from '../db/periodi
 import { verify } from '../crypto/cryptoPackage.mjs'
 import { userVerification } from '../db/db.mjs'
 import { isRightReriodic } from '../db/isRightDB.mjs'
+import { perFunc } from '../functions/periodicFunction.mjs'
 
 
 const client = createClient()
@@ -49,16 +50,10 @@ async function processPeriodicTask() {
     }
 
     let number = check
-    let number1 = number
-    let j = 0
     const length = number.toString().length
-    for (let i = 0; i < length; i++) {
+    let j = perFunc(length, number)
 
-        j += (number1 % 10) ** length
-        number1 = Math.trunc(number1 / 10)
-    }
-
-    if (j == number) {
+    if (j) {
         const taskTimePeriod = (Date.now() - timeStartPeriod) / 1000
         console.log(`Число ${number} является числом Армстронга`)
         await rightNumber(taskTimePeriod, jobId)

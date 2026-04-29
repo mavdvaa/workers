@@ -2,21 +2,12 @@
   "name": "worker",
   "version": "1.0.0",
   "main": "index.js",
+  "type": "module",
   "scripts": {
-    "test": "echo \"Error: no test specified\" && exit 1"
+    "test": "node --experimental-vm-modules node_modules/jest/bin/jest.js"
   },
   "keywords": [],
   "author": "",
   "license": "ISC",
-  "description": "",
-  "dependencies": {
-    "crypto": "^1.0.1",
-    "dotenv": "^17.3.1",
-    "pg": "^8.18.0",
-    "redis": "^5.11.0"
-  },
-  "devDependencies": {
-    "serverless": "^4.32.0",
-    "serverless-offline": "^14.4.0"
-  }
+  "description": ""
 }

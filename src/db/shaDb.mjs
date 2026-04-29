@@ -1,14 +1,14 @@
 import { pool } from "./db.mjs"
 
-export async function shaResults(prefix, hash, taskTimeSHA, jobId) {
+export async function shaResults(hash, taskTimeSHA, i, jobId) {
     const shaTableRes = await pool.query(`
     UPDATE sha_tasks
-    SET prefix = $1,
-    result = $2,
+    SET result = $1,
     status = true,
-    task_time = $3
+    task_time = $2,
+    i = $3
     WHERE job_id = $4`,
-        [prefix, hash, taskTimeSHA, jobId])
+        [hash, taskTimeSHA, i, jobId])
 
 }
 
