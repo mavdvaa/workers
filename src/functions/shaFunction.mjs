@@ -1,5 +1,4 @@
 import { createHash } from 'crypto'
-
 export function shaFunc(text, prefix, start, end) {
     let i = start
 
@@ -20,6 +19,7 @@ export function shaFunc(text, prefix, start, end) {
     }
 
     return {
+        
         found: false
     }
 }

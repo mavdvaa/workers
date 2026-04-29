@@ -10,4 +10,5 @@ export function perFunc(length, number) {
 
     return j == number
     
+    
 }
